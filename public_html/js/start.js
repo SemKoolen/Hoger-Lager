@@ -45,7 +45,7 @@ function onDiceHandler()
     {
       console.log(inzet);
 
-      if (userInput == "hoger")
+      if (userInput == "Hoger")
       {
         if (userTotal > dealerTotal)
         {
@@ -61,7 +61,7 @@ function onDiceHandler()
         }
       }
 
-      else if (userInput == "lager")
+      else if (userInput == "Lager")
       {
         if (userTotal < dealerTotal)
         {
@@ -90,7 +90,7 @@ function onDiceHandler()
 function onHogerHandler()
 {
   console.log("Hoger invoer geregistreerd.");
-  userInput = "hoger";
+  userInput = "Hoger";
   document.getElementById('userRoll').style.display = "inline";
   document.getElementById('hoger').style.display = "none";
   document.getElementById('lager').style.display = "none";
@@ -99,7 +99,7 @@ function onHogerHandler()
 function onLagerHandler()
 {
   console.log("Lager invoer geregistreerd.")
-  userInput = "lager";
+  userInput = "Hager";
   document.getElementById('userRoll').style.display = "inline";
   document.getElementById('hoger').style.display = "none";
   document.getElementById('lager').style.display = "none";
