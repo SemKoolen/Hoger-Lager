@@ -3,6 +3,7 @@ window.onload=start
 var coinsBalance = '500';
 var inzet ;
 var win ;
+var winst ;
 
 var userInput ;
 var userDice1 ;
@@ -11,6 +12,12 @@ var userTotal ;
 var dealerDice1 ;
 var dealerDice2 ;
 var dealerTotal ;
+
+var logLeftElement ;
+var logRechtsElement ;
+var rounds = 0;
+var logInfo1 = "";
+var logInfo2 = "";
 
 function start() {
     console.log("Het programma is opgestart");
@@ -44,11 +51,13 @@ function onDiceHandler()
         {
           win = true;
           coinsBalance = +coinsBalance + +inzet;
+          winst = inzet;
         }
         else
         {
           win = false;
           coinsBalance -= inzet;
+          winst = -inzet;
         }
       }
 
@@ -58,11 +67,13 @@ function onDiceHandler()
         {
           win = true;
           coinsBalance = +coinsbalance + +inzet;
+          winst = inzet;
         }
         else
         {
           win = false;
           coinsBalance -= inzet;
+          winst = -inzet;
         }
       }
       console.log(win);
@@ -102,6 +113,8 @@ function onUserRoll()
   console.log("User rolled");
   onDiceHandler();
   onResetHandler();
+  onLogElementHandler();
+  onLogHandler();
 }
 
 function onDealerRoll()
@@ -121,4 +134,23 @@ function onResetHandler()
     document.getElementById("userRoll").style.display = "none";
     document.getElementById("hoger").style.display = "none";
     document.getElementById("lager").style.display = "none";
+}
+
+function onLogHandler()
+{
+        logInfo1 = logLeftElement + logInfo1;
+        var info1 = document.getElementById("info1");
+        info1.innerHTML = logInfo1;
+
+        logInfo2 = logRightElement + logInfo2;
+        var info2 = document.getElementById("info2");
+        info2.innerHTML = logInfo2;
+}
+
+function onLogElementHandler()
+{
+    logLeftElement = "Inzet:<br />Keuze:<br />Bank:<br />Speler:<br />Winst:<br /><br />";
+    logRightElement = inzet + "<br />" + userInput + '<br /><img src="images/roll1.png" /> + <img src="images/roll3.png" /> = ' + userTotal + '<br /><img src="images/roll6.png" /> + <img src="images/roll4.png" /> = ' + dealerTotal + "<br />" + winst + "<br /><br />";
+    rounds += 1;
+    console.log(rounds);
 }
