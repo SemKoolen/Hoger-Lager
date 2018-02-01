@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/start.js"></script>
+    <title></title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <header>
+        <h1>Hoger Lager</h1>
+      </header>
+      <div id="leftbar">
+        <h1>Log:</h1>
+        <p id="info1">Inzet:<br>Keuze:<br>Bank:<br>Speler:<br>Winst:<br><br>Inzet:<br>Keuze:<br>Bank:<br>Speler:<br>Verlies:</p>
+        <p id="info2">50<br>Hoger<br><img src="images/roll1.png"> + <img src="images/roll3.png"> = 4<br><img src="images/roll6.png"> + <img src="images/roll4.png"> = 10<br>100<br><br>80<br>Loger<br><img src="images/roll3.png"> + <img src="images/roll2.png"> = 5<br><img src="images/roll5.png"> + <img src="images/roll3.png"> = 8<br>80</p>
+      </div>
+      <main>
+        <canvas id="canvas" width="600" height="600"></canvas>
+      </main>
+      <div id="rightbar">
+        <div id="AO coins">
+          <h1>AO Coins:</h1>
+          <p>500</p>
+        </div>
+        <div>
+          <h1>Inzet:</h1>
+          <input type="number" min="10" name="inzet" id="inzet" value="10">
+        </div>
+        <div>
+          <button type="button" name="button" id="dealerRoll">Bank Gooien</button>
+          <button type="button" name="button" id="userRoll">Speler Gooien</button>
+          <button type="button" name="button" id="hoger">Hoger</button>
+          <button type="button" name="button" id="lager">Lager</button>
+        </div>
+        <!-- <div>
+          <button type="button" name="button" id="hoger">Hoger</button>
+          <button type="button" name="button" id="lager">Lager</button>
+        </div> -->
+        <footer>Uitgebracht door: Wokpan Inc.</footer>
+      </div>
+    </div>
+  </body>
+</html>

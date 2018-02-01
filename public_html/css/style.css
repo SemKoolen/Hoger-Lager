@@ -1,0 +1,133 @@
+html, body {
+  height: 100%;
+  font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
+  color: white;
+}
+
+body {
+  margin: 0;
+}
+
+#wrapper {
+  display: grid;
+  height: 100%;
+  grid-template-rows: 100px 1fr;
+  grid-template-columns: 300px 1fr 250px;
+  grid-template-areas:
+    'header header header'
+    'leftbar main rightbar'
+    'leftbar main footer';
+}
+
+header {
+  grid-area: header;
+  background-image: url("../images/footer5.jpg");
+  background-position: center;
+  text-align: center;
+  border-left: 15px solid black;
+  border-right: 15px solid black;
+}
+
+header h1 {
+  font-size: 40px;
+}
+
+#leftbar {
+  grid-area: leftbar;
+  background: #42412F;
+  text-align: left;
+  border-top: 15px solid black;
+  border-left: 15px solid black;
+  border-bottom: 15px solid black;
+}
+
+#leftbar h1 {
+  margin: 10px;
+  padding-bottom: 5px;
+  font-size: 30px;
+  border-bottom: 5px solid #292816;
+}
+
+#leftbar p {
+  padding-left: 0.75em;
+  display: inline-block;
+}
+
+#leftbar img {
+  width: 15px;
+  height: 15px;
+}
+
+main {
+  grid-area: main;
+  background: #013220;
+  text-align: center;
+  border: 15px solid black;
+}
+
+#rightbar {
+  grid-area: rightbar;
+  background: black;
+  text-align: center;
+  border-top: 15px solid black;
+  border-right: 15px solid black;
+}
+
+#rightbar div {
+  border-top: 5px solid #292816;
+  background: #42412F;
+  margin-bottom: 20px;
+}
+
+#rightbar div h1 {
+  margin: 10px;
+  margin-bottom: 0;
+  font-size: 28px;
+}
+
+#rightbar div p {
+  margin: 10px;
+  padding-bottom: 10px;
+  font-size: 20px;
+}
+
+#rightbar div input {
+  margin: 10px;
+  width: 200px;
+  height: 20px;
+  font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
+  background: #292816;
+  color: white;
+  font-size: 18px;
+}
+
+#rightbar div button {
+  width: 200px;
+  height: 40px;
+  margin: 10px;
+  font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
+  background: #292816;
+  color: white;
+  font-size: 20px;
+  border: none;
+}
+
+#rightbar div button:hover {
+  background: #D6D7E9;
+  color: #292816;
+  cursor: pointer;
+  box-shadow: 0 3px #292816;
+}
+
+#rightbar div button:active {
+  transform: translateY(2px);
+  box-shadow: 0 3px #292816;
+}
+
+footer {
+  grid-area: footer;
+  background: black;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}
