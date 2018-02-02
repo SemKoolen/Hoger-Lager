@@ -16,8 +16,6 @@ var dealerTotal ;
 var logLeftElement ;
 var logRechtsElement ;
 var rounds = 0;
-var logInfo1 = "";
-var logInfo2 = "";
 
 function start() {
     console.log("Het programma is opgestart");
@@ -138,10 +136,12 @@ function onResetHandler()
 
 function onLogHandler()
 {
+        var logInfo1 = "";
         logInfo1 = logLeftElement + logInfo1;
         var info1 = document.getElementById("info1");
         info1.innerHTML = logInfo1;
 
+        var logInfo2 = "";
         logInfo2 = logRightElement + logInfo2;
         var info2 = document.getElementById("info2");
         info2.innerHTML = logInfo2;
