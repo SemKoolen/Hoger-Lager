@@ -40,7 +40,7 @@ class Controller {
    }
 
    reactOnDealerRoll() {
-     this.dealerRoll = this.model.onDealerRoll();
+     this.dealerRoll = this.model.onDealerRollMaster();
      this.dealerRollArray = this.model.getDealerRoll();
      this.view.onDealerRoll();
      this.view.onDealerCanvasHandler(this.dealerRollArray);

@@ -19,19 +19,13 @@ class Model {
     let value = document.getElementById("inzet").value ;
     let min = 10;
     let max = this.coinBalance;
-    console.log("mouseleave");
-    console.log("min: " + min);
-    console.log("max: " + max);
-    console.log("value: " + value)
 
     if(value > max) {
         document.getElementById("inzet").value = max;
-        console.log("To high inzet detected");
         var errorMessage = "Inzet te hoog";
     }
     else if(value < min) {
         document.getElementById("inzet").value = min;
-        console.log("To low inzet detected");
         errorMessage = "Inzet te laag";
     }
     else {
@@ -65,7 +59,6 @@ class Model {
 
       let dice = [this.dealerDice1, this.dealerDice2, this.userDice1, this.userDice2];
       let diceImage = new Array(4);
-      debugger;
       for (var x = 0; x < 4; x++) {
         switch (dice[x]) {
           case 1:
@@ -100,7 +93,6 @@ class Model {
       this.userDice1 = Math.floor((Math.random() * 6) + 1);
       this.userDice2 = Math.floor((Math.random() * 6) + 1);
       this.userTotal = this.userDice1 + this.userDice2;
-      console.log("User rolled");
       return this.userTotal;
   }
 
@@ -110,12 +102,22 @@ class Model {
   }
 
   onDealerRoll() {
-      this.dealerDice1 = Math.floor((Math.random() * 6) + 1);
-      this.dealerDice2 = Math.floor((Math.random() * 6) + 1);
-      this.dealerTotal = this.dealerDice1 + this.dealerDice2;
-      console.log("Dealer Rolled");
-      return this.dealerTotal;
+        this.dealerDice1 = Math.floor((Math.random() * 6) + 1);
+        this.dealerDice2 = Math.floor((Math.random() * 6) + 1);
+        this.dealerTotal = this.dealerDice1 + this.dealerDice2;
+        return this.dealerTotal;
   }
+
+  onDealerRollMaster() {
+        this.onDealerRoll()
+        while (this.dealerTotal == 2 || this.dealerTotal == 12) {
+          this.onDealerRoll();
+          console.log("2 or 12 trown bij dealer");
+        }
+        return this.dealerTotal;
+  }
+
+
 
   getDealerRoll() {
     let dealerRollArray = [this.dealerDice1, this.dealerDice2, this.dealerTotal];
@@ -128,11 +130,10 @@ class Model {
       if (win == true) {
         this.coinBalance = +this.coinBalance + +this.inzet;
         this.winst = this.inzet;
-        console.log("New coin balance: " + this.coinBalance);
-      } else if(win == false) {
+      }
+      else if(win == false) {
         this.coinBalance -= this.inzet;
         this.winst = -this.inzet;
-        console.log("New coin balance: " + this.coinBalance);
       }
 
   }
@@ -140,37 +141,28 @@ class Model {
   onDiceHandler(userTotal, dealerTotal, userInput) {
 
       let inzet = document.getElementById("inzet").value;
-      if (inzet >= '10')
+      if (userInput == "Hoger")
       {
-        console.log("Inzet: " + inzet);
-
-        if (userInput == "Hoger")
+        if (userTotal > dealerTotal)
         {
-          if (userTotal > dealerTotal)
-          {
-            return true;
-          }
-          else
-          {
-            return false;
-          }
+          return true;
         }
-
-        else if (userInput == "Lager")
+        else
         {
-          if (userTotal < dealerTotal)
-          {
-            return true;
-          }
-          else
-          {
-            return false;
-          }
+          return false;
         }
       }
-      else
+
+      else if (userInput == "Lager")
       {
-        console.log("Inzet to low!");
+        if (userTotal < dealerTotal)
+        {
+          return true;
+        }
+        else
+        {
+          return false;
+        }
       }
 
   }

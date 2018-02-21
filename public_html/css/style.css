@@ -39,7 +39,20 @@ header h1 {
   border-top: 15px solid black;
   border-left: 15px solid black;
   border-bottom: 15px solid black;
-  overflow: auto;
+  display: grid;
+  grid-template-rows: 55px 1fr;
+  grid-template-areas:
+  'toplog'
+  'log';
+}
+
+#toplog {
+  grid-area: toplog;
+}
+
+#log {
+  grid-area: log;
+  overflow-y: auto;
 }
 
 ::-webkit-scrollbar {
@@ -64,9 +77,11 @@ header h1 {
 }
 
 #leftbar p {
+  margin-top: 5px;
   padding-left: 0.75em;
   display: inline-block;
 }
+
 
 #leftbar img {
   width: 15px;
@@ -86,7 +101,6 @@ main {
 
 #canvas {
   margin: 15px;
-  background: grey;
 }
 
 #rightbar {
