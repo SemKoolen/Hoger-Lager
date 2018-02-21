@@ -44,4 +44,84 @@ class View {
       document.getElementById('lager').style.display = "none";
   }
 
+  onDealerCanvasHandler(dealerRollArray)
+  {
+    let c = document.getElementById("canvas");
+    let ctx = c.getContext("2d");
+    ctx.clearRect(0,0, document.getElementById("canvas").width,
+    document.getElementById("canvas").height);
+    this.roll = [document.getElementById("roll1"), document.getElementById("roll2"), document.getElementById("roll3"),
+                document.getElementById("roll4"), document.getElementById("roll5"), document.getElementById("roll6")];
+    this.pos = [25, 150];
+    for (var x = 0 ; x < 2; x++) {
+      switch(dealerRollArray[x])
+      {
+        case 1:
+        ctx.drawImage(this.roll[0],this.pos[x],25,100,100);
+        break;
+        case 2:
+        ctx.drawImage(this.roll[1],this.pos[x],25,100,100);
+        break;
+        case 3:
+        ctx.drawImage(this.roll[2],this.pos[x],25,100,100);
+        break;
+        case 4:
+        ctx.drawImage(this.roll[3],this.pos[x],25,100,100);
+        break;
+        case 5:
+        ctx.drawImage(this.roll[4],this.pos[x],25,100,100);
+        break;
+        case 6:
+        ctx.drawImage(this.roll[5],this.pos[x],25,100,100);
+        break;
+      }
+    }
+      ctx.fillStyle="white";
+      ctx.font = "50px Rockwell";
+      ctx.fillText(dealerRollArray[2],400,90);
+  }
+
+  onUserCanvasHandler(userRollArray)
+  {
+    let c = document.getElementById("canvas");
+    let ctx = c.getContext("2d");
+
+    for (var x = 0; x < 2; x++) {
+      switch(userRollArray[x])
+      {
+        case 1:
+        ctx.drawImage(this.roll[0],this.pos[x],275,100,100);
+        break;
+        case 2:
+        ctx.drawImage(this.roll[1],this.pos[x],275,100,100);
+        break;
+        case 3:
+        ctx.drawImage(this.roll[2],this.pos[x],275,100,100);
+        break;
+        case 4:
+        ctx.drawImage(this.roll[3],this.pos[x],275,100,100);
+        break;
+        case 5:
+        ctx.drawImage(this.roll[4],this.pos[x],275,100,100);
+        break;
+        case 6:
+        ctx.drawImage(this.roll[5],this.pos[x],275,100,100);
+        break;
+      }
+    }
+
+    ctx.fillStyle="#ffffff";
+    ctx.font = "50px Rockwell";
+    ctx.fillText(userRollArray[2],400,340);
+
+    if (userRollArray[3])
+    {
+        ctx.fillText("Speler Wint!",110,210);
+    }
+    else
+    {
+      ctx.fillText("Bank Wint!",130,210);
+    }
+  }
+
 }

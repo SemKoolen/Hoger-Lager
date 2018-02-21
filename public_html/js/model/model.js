@@ -63,7 +63,7 @@ class Model {
 
   onLogRightHandler() {
 
-      let dice = [this.userDice1, this.userDice2, this.dealerDice1, this.dealerDice2];
+      let dice = [this.dealerDice1, this.dealerDice2, this.userDice1, this.userDice2];
       let diceImage = new Array(4);
       debugger;
       for (var x = 0; x < 4; x++) {
@@ -89,7 +89,7 @@ class Model {
         }
       }
 
-      let logRightElement = this.inzet + "<br />" + this.userInput + '<br /><img src=' + diceImage[0] + ' /> + <img src=' + diceImage[1] + ' /> = ' + this.userTotal + '<br /><img src=' + diceImage[2] + ' /> + <img src=' + diceImage[3] + ' /> = ' + this.dealerTotal + "<br />" + this.winst + "<br /><br />";
+      let logRightElement = this.inzet + "<br />" + this.userInput + '<br /><img src=' + diceImage[0] + ' /> + <img src=' + diceImage[1] + ' /> = ' + this.dealerTotal + '<br /><img src=' + diceImage[2] + ' /> + <img src=' + diceImage[3] + ' /> = ' + this.userTotal + "<br />" + this.winst + "<br /><br />";
 
       this.logInfo2 = logRightElement + this.logInfo2;
       return this.logInfo2;
@@ -104,6 +104,11 @@ class Model {
       return this.userTotal;
   }
 
+  getUserRoll(winValue) {
+    let userRollArray = [this.userDice1, this.userDice2, this.userTotal, winValue];
+    return userRollArray;
+  }
+
   onDealerRoll() {
       this.dealerDice1 = Math.floor((Math.random() * 6) + 1);
       this.dealerDice2 = Math.floor((Math.random() * 6) + 1);
@@ -112,14 +117,19 @@ class Model {
       return this.dealerTotal;
   }
 
-  onCoinHandler(lose) {
+  getDealerRoll() {
+    let dealerRollArray = [this.dealerDice1, this.dealerDice2, this.dealerTotal];
+    return dealerRollArray;
+  }
+
+  onCoinHandler(win) {
       this.inzet = document.getElementById("inzet").value;
 
-      if (lose == false) {
+      if (win == true) {
         this.coinBalance = +this.coinBalance + +this.inzet;
         this.winst = this.inzet;
         console.log("New coin balance: " + this.coinBalance);
-      } else if(lose == true) {
+      } else if(win == false) {
         this.coinBalance -= this.inzet;
         this.winst = -this.inzet;
         console.log("New coin balance: " + this.coinBalance);

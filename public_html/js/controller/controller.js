@@ -29,6 +29,8 @@ class Controller {
             this.userInput = this.model.getUserInput();
             this.winValue = this.model.onDiceHandler(this.userRoll, this.dealerRoll, this.userInput)
             this.model.onCoinHandler(this.winValue);
+            this.userRollArray = this.model.getUserRoll(this.winValue);
+            this.view.onUserCanvasHandler(this.userRollArray);
             this.view.displayCoinsBalance(this.model.getCoinBalance());
             this.view.onResetHandler();
             this.view.logLeftView(this.model.onLogLeftHandler());
@@ -39,7 +41,9 @@ class Controller {
 
    reactOnDealerRoll() {
      this.dealerRoll = this.model.onDealerRoll();
+     this.dealerRollArray = this.model.getDealerRoll();
      this.view.onDealerRoll();
+     this.view.onDealerCanvasHandler(this.dealerRollArray);
    }
 
 }

@@ -39,11 +39,26 @@ header h1 {
   border-top: 15px solid black;
   border-left: 15px solid black;
   border-bottom: 15px solid black;
+  overflow: auto;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background: #42412F;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #292816;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
 }
 
 #leftbar h1 {
-  margin: 10px;
-  padding-bottom: 5px;
+  margin-top: 10px;
+  padding: 0px 0px 5px 15px;
   font-size: 30px;
   border-bottom: 5px solid #292816;
 }
@@ -63,6 +78,15 @@ main {
   background: #013220;
   text-align: center;
   border: 15px solid black;
+}
+
+#images {
+  display: none;
+}
+
+#canvas {
+  margin: 15px;
+  background: grey;
 }
 
 #rightbar {
