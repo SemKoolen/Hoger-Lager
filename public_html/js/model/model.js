@@ -1,8 +1,13 @@
 class Model {
   constructor(){
     this.userInput ;
-    this.logInfo1 ;
-    this.logInfo2 ;
+    this.logInfo1 = "";
+    this.logInfo2 = "";
+    this.inzet ;
+    this.userTotal ;
+    this.dealerTotal ;
+    this.winst ;
+    this.coinBalance = 500 ;
   }
 
   getInzet() {
@@ -10,8 +15,38 @@ class Model {
       return inzet;
   }
 
+  checkInzetValue(event) {
+    let value = document.getElementById("inzet").value ;
+    let min = 10;
+    let max = this.coinBalance;
+    console.log("mouseleave");
+    console.log("min: " + min);
+    console.log("max: " + max);
+    console.log("value: " + value)
+
+    if(value > max) {
+        document.getElementById("inzet").value = max;
+        console.log("To high inzet detected");
+        var errorMessage = "Inzet te hoog";
+    }
+    else if(value < min) {
+        document.getElementById("inzet").value = min;
+        console.log("To low inzet detected");
+        errorMessage = "Inzet te laag";
+    }
+    else {
+        errorMessage = "none"
+    }
+      return errorMessage;
+  }
+
+
+  getCoinBalance() {
+      return this.coinBalance;
+  }
+
   onChoiceHandler(input) {
-      userInput = input;
+      this.userInput = input;
   }
 
   getUserInput() {
@@ -19,64 +54,95 @@ class Model {
   }
 
 
-  onLogHandler() {
-      logInfo1 = logLeftElement + logInfo1;
-      var info1 = document.getElementById("info1");
-      info1.innerHTML = logInfo1;
+  onLogLeftHandler() {
+      let logLeftElement = "Inzet:<br />Keuze:<br />Bank:<br />Speler:<br />Winst:<br /><br />";
 
-      logInfo2 = logRightElement + logInfo2;
-      var info2 = document.getElementById("info2");
-      info2.innerHTML = logInfo2;
+      this.logInfo1 = logLeftElement + this.logInfo1;
+      return this.logInfo1;
   }
 
-  onLogElementHandler() {
-      logLeftElement = "Inzet:<br />Keuze:<br />Bank:<br />Speler:<br />Winst:<br /><br />";
-      logRightElement = inzet + "<br />" + userInput + '<br /><img src="images/roll1.png" /> + <img src="images/roll3.png" /> = ' + userTotal + '<br /><img src="images/roll6.png" /> + <img src="images/roll4.png" /> = ' + dealerTotal + "<br />" + winst + "<br /><br />";
+  onLogRightHandler() {
+
+      let dice = [this.userDice1, this.userDice2, this.dealerDice1, this.dealerDice2];
+      let diceImage = new Array(4);
+      debugger;
+      for (var x = 0; x < 4; x++) {
+        switch (dice[x]) {
+          case 1:
+              diceImage[x] = "images/roll1.png";
+              break;
+          case 2:
+              diceImage[x] = "images/roll2.png";
+              break;
+          case 3:
+              diceImage[x] = "images/roll3.png";
+              break;
+          case 4:
+              diceImage[x] = "images/roll4.png";
+              break;
+          case 5:
+              diceImage[x] = "images/roll5.png";
+              break;
+          case 6:
+              diceImage[x] = "images/roll6.png";
+              break;
+        }
+      }
+
+      let logRightElement = this.inzet + "<br />" + this.userInput + '<br /><img src=' + diceImage[0] + ' /> + <img src=' + diceImage[1] + ' /> = ' + this.userTotal + '<br /><img src=' + diceImage[2] + ' /> + <img src=' + diceImage[3] + ' /> = ' + this.dealerTotal + "<br />" + this.winst + "<br /><br />";
+
+      this.logInfo2 = logRightElement + this.logInfo2;
+      return this.logInfo2;
   }
+
 
   onUserRoll() {
-      var userDice1 = Math.floor((Math.random() * 6) + 1);
-      var userDice2 = Math.floor((Math.random() * 6) + 1);
-      var userTotal = userDice1 + userDice2;
-      return userTotal;
+      this.userDice1 = Math.floor((Math.random() * 6) + 1);
+      this.userDice2 = Math.floor((Math.random() * 6) + 1);
+      this.userTotal = this.userDice1 + this.userDice2;
       console.log("User rolled");
+      return this.userTotal;
   }
 
   onDealerRoll() {
-      dealerDice1 = Math.floor((Math.random() * 6) + 1);
-      dealerDice2 = Math.floor((Math.random() * 6) + 1);
-      dealerTotal = dealerDice1 + dealerDice2;
-      return dealerTotal;
-      console.log("Dealer Roll");
+      this.dealerDice1 = Math.floor((Math.random() * 6) + 1);
+      this.dealerDice2 = Math.floor((Math.random() * 6) + 1);
+      this.dealerTotal = this.dealerDice1 + this.dealerDice2;
+      console.log("Dealer Rolled");
+      return this.dealerTotal;
   }
 
-  onCoinHandler() {
-      inzet = document.getElementById("inzet").value;
+  onCoinHandler(lose) {
+      this.inzet = document.getElementById("inzet").value;
 
-      var listNodes = document.getElementById("AO coins").getElementsByTagName("p");
-      pElement = listNodes[0];
-      pElement.innerHTML  = coinsBalance;
+      if (lose == false) {
+        this.coinBalance = +this.coinBalance + +this.inzet;
+        this.winst = this.inzet;
+        console.log("New coin balance: " + this.coinBalance);
+      } else if(lose == true) {
+        this.coinBalance -= this.inzet;
+        this.winst = -this.inzet;
+        console.log("New coin balance: " + this.coinBalance);
+      }
+
   }
 
   onDiceHandler(userTotal, dealerTotal, userInput) {
 
+      let inzet = document.getElementById("inzet").value;
       if (inzet >= '10')
       {
-        console.log(inzet);
+        console.log("Inzet: " + inzet);
 
         if (userInput == "Hoger")
         {
           if (userTotal > dealerTotal)
           {
-            win = true;
-            coinsBalance = +coinsBalance + +inzet;
-            winst = inzet;
+            return true;
           }
           else
           {
-            win = false;
-            coinsBalance -= inzet;
-            winst = -inzet;
+            return false;
           }
         }
 
@@ -84,20 +150,13 @@ class Model {
         {
           if (userTotal < dealerTotal)
           {
-            win = true;
-            coinsBalance = +coinsbalance + +inzet;
-            winst = inzet;
+            return true;
           }
           else
           {
-            win = false;
-            coinsBalance -= inzet;
-            winst = -inzet;
+            return false;
           }
         }
-        console.log(win);
-        console.log(coinsBalance);
-        onCoinHandler();
       }
       else
       {
