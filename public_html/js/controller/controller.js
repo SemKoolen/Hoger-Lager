@@ -4,12 +4,19 @@ class Controller {
       this.view = new View();
       this.view.displayCoinsBalance(this.model.getCoinBalance());
       this.view.onResetHandler();
+      this.view.setDiceImage();
+      this.model.getImageRoll("1");
       document.getElementById("hoger").addEventListener("click", (e) => this.model.onChoiceHandler("Hoger"));
       document.getElementById("hoger").addEventListener("click", (e) => this.view.switchToUserRoll());
       document.getElementById("lager").addEventListener("click", (e) => this.model.onChoiceHandler("Lager"));
       document.getElementById("lager").addEventListener("click", (e) => this.view.switchToUserRoll());
       document.getElementById("dealerRoll").addEventListener("click", (e) => this.reactOnDealerRoll());
       document.getElementById("userRoll").addEventListener("click", (e) => this.reactOnUserRoll());
+      document.getElementById("shopItem1").addEventListener("click", (e) => this.onShopHandler("1"));
+      document.getElementById("shopItem2").addEventListener("click", (e) => this.onShopHandler("2"));
+      document.getElementById("shopItem3").addEventListener("click", (e) => this.onShopHandler("3"));
+      document.getElementById("shopItem4").addEventListener("click", (e) => this.onShopHandler("4"));
+      document.getElementById("shopItem5").addEventListener("click", (e) => this.onShopHandler("5"));
    }
 
    reactOnUserRoll() {
@@ -44,6 +51,20 @@ class Controller {
      this.dealerRollArray = this.model.getDealerRoll();
      this.view.onDealerRoll();
      this.view.onDealerCanvasHandler(this.dealerRollArray);
+   }
+
+   onShopHandler(clicked) {
+     if (this.model.hasEnoughMoney(clicked)) {
+       if (clicked == 5) {
+         this.view.displayWinner(clicked);
+       } else {
+         this.imageRoll = this.model.getImageRoll(clicked);
+         this.view.shopHandler(clicked, this.imageRoll);
+       }
+     } else {
+       this.view.displayCoinsBalance();
+     }
+
    }
 
 }

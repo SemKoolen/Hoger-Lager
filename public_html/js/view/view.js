@@ -10,6 +10,30 @@ class View {
       document.getElementById("errorMessage").style.display = "none";
   }
 
+  shopHandler(number, imageRoll) {
+      for (let y = 1; y < 5; y++) {
+        document.getElementById("imageItem" + y).style.border = "3px solid #5C6655"
+      }
+      document.getElementById("imageItem" + number).style.border = "3px solid blue";
+      document.getElementById("pItem" + number).style.display = "none";
+      for (let x = 1; x < 7; x++) {
+        document.getElementById("roll"+ x).src = "images/" +imageRoll[x-1];
+      }
+      document.getElementById("shopItem" + number).innerHTML = "Kies"
+  }
+
+  displayWinner(number) {
+      document.getElementById("imageItem" + number).style.border = "3px solid blue";
+      document.getElementById("pItem" + number).style.display = "none";
+      document.getElementById("winner").style.display = "inline";
+      document.getElementById("shopItem5").innerHTML = "Gekocht"
+  }
+
+  setDiceImage() {
+      document.getElementById("imageItem1").style.border = "3px solid blue";
+      document.getElementById("winner").style.display = "none";
+  }
+
   displayCoinsBalance(coinsBalance) {
       let listNodes = document.getElementById("AO coins").getElementsByTagName("p");
       let pElement = listNodes[0];

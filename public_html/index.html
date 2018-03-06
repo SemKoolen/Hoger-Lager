@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" type="image/png" href="images/roll4.png"/>
     <script type="text/javascript" src="js/controller/Controller.js"></script>
 		<script type="text/javascript" src="js/view/View.js"></script>
 		<script type="text/javascript" src="js/model/Model.js"></script>
@@ -38,28 +37,28 @@
         </div>
         <div id="shop">
           <div class="item">
-            <button type="button" name="button">Gekozen</button>
-            <img src="images/roll1.png" height="50px" width="50px">
+            <button type="button" id="shopItem1" name="button">Kies</button>
+            <img id="imageItem1" src="images/rollall.png" height="50px" width="50px">
           </div>
           <div class="item">
-            <button type="button" name="button">Koop</button>
-            <img src="images/roll1_blue.png" height="50px" width="50px">
-            <p>3000 AO Coins</p>
+            <button type="button" id="shopItem2" name="button">Koop</button>
+            <img id="imageItem2" src="images/rollall_blue.png" height="50px" width="50px">
+            <p id="pItem2">3000 AO Coins</p>
           </div>
           <div class="item">
-            <button type="button" name="button">Koop</button>
-            <img src="images/roll1_green.png" height="50px" width="50px">
-            <p>3000 AO Coins</p>
+            <button type="button" id="shopItem3" name="button">Koop</button>
+            <img id="imageItem3" src="images/rollall_green.png" height="50px" width="50px">
+            <p id="pItem3">3000 AO Coins</p>
           </div>
           <div class="item">
-            <button type="button" name="button">Koop</button>
-            <img src="images/roll1_gold.png" height="50px" width="50px">
-            <p>10000 AO Coins</p>
+            <button type="button" id="shopItem4" name="button">Koop</button>
+            <img id="imageItem4" src="images/rollall_gold.png" height="50px" width="50px">
+            <p id="pItem4">10000 AO Coins</p>
           </div>
           <div class="item">
-            <button type="button" name="button">Koop</button>
-            <img src="images/winner.png" height="100px" width="50px">
-            <p>50000 AO Coins</p>
+            <button type="button" id="shopItem5" name="button">Koop</button>
+            <img id="imageItem5" src="images/winner.png" height="100px" width="50px">
+            <p id="pItem5">50000 AO Coins</p>
           </div>
         </div>
       </main>
@@ -78,6 +77,9 @@
           <button type="button" name="button" id="userRoll">Speler Gooien</button>
           <button type="button" name="button" id="hoger">Hoger</button>
           <button type="button" name="button" id="lager">Lager</button>
+        </div>
+        <div>
+          <img src="images/winner.png" width="200px" id=winner>
         </div>
         <footer>Uitgebracht door: Wokpan Inc.</footer>
       </div>

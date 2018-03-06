@@ -62,22 +62,22 @@ class Model {
       for (var x = 0; x < 4; x++) {
         switch (dice[x]) {
           case 1:
-              diceImage[x] = "images/roll1.png";
+              diceImage[x] = "images/" + this.imageRoll[x];
               break;
           case 2:
-              diceImage[x] = "images/roll2.png";
+              diceImage[x] = "images/" + this.imageRoll[x];
               break;
           case 3:
-              diceImage[x] = "images/roll3.png";
+              diceImage[x] = "images/" + this.imageRoll[x];
               break;
           case 4:
-              diceImage[x] = "images/roll4.png";
+              diceImage[x] = "images/" + this.imageRoll[x];
               break;
           case 5:
-              diceImage[x] = "images/roll5.png";
+              diceImage[x] = "images/" + this.imageRoll[x];
               break;
           case 6:
-              diceImage[x] = "images/roll6.png";
+              diceImage[x] = "images/" + this.imageRoll[x];
               break;
         }
       }
@@ -136,6 +136,56 @@ class Model {
         this.winst = -this.inzet;
       }
 
+  }
+
+  getImageRoll(clicked){
+    this.imageRoll = [];
+    this.definitive = "";
+    this.bought = ["1"]
+    switch (clicked) {
+      case "1":
+          this.definitive = ".png";
+          break;
+      case "2":
+          this.definitive = "_blue.png";
+          this.bought.push("2")
+          break;
+      case "3":
+          this.definitive = "_green.png";
+          this.bought.push("3")
+          break;
+      case "4":
+          this.definitive = "_gold.png";
+          this.bought.push("4")
+          break;
+    }
+    for (let x = 1; x < 7; x++) {
+      this.imageRoll[x-1] = "roll" + x + this.definitive;
+    }
+    return this.imageRoll;
+  }
+
+  hasEnoughMoney(clicked) {
+      for (let x = 0; x < 4; x++) {
+        if (this.bought[x] == clicked) {
+          return true;
+        }
+      } else {
+        switch (clicked) {
+          case "1":
+              return true;
+              break;
+          case "2":
+              if (this.coinBalance => 3000) { return true;} else {return false};
+              break;
+          case "3":
+              if (this.coinBalance => 3000) { return true;} else {return false};
+              break;
+          case "4":
+              if (this.coinBalance => 3000) { return true;} else {return false};
+              break;
+        }
+      }
   }
 
   onDiceHandler(userTotal, dealerTotal, userInput) {
