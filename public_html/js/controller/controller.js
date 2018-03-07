@@ -57,12 +57,15 @@ class Controller {
      if (this.model.hasEnoughMoney(clicked)) {
        if (clicked == 5) {
          this.view.displayWinner(clicked);
+         this.view.displayCoinsBalance(this.model.getCoinBalance());
        } else {
          this.imageRoll = this.model.getImageRoll(clicked);
          this.view.shopHandler(clicked, this.imageRoll);
+         this.view.displayCoinsBalance(this.model.getCoinBalance());
        }
      } else {
-       this.view.displayCoinsBalance();
+       this.
+       this.view.displayShopError();
      }
 
    }

@@ -26,12 +26,14 @@ class View {
       document.getElementById("imageItem" + number).style.border = "3px solid blue";
       document.getElementById("pItem" + number).style.display = "none";
       document.getElementById("winner").style.display = "inline";
-      document.getElementById("shopItem5").innerHTML = "Gekocht"
+      document.getElementById("winWrapper").style.borderTop = "3px solid #292816"
+      document.getElementById("shopItem5").innerHTML = "Gekocht";
   }
 
   setDiceImage() {
       document.getElementById("imageItem1").style.border = "3px solid blue";
       document.getElementById("winner").style.display = "none";
+      document.getElementById("winWrapper").style.border = "none"
   }
 
   displayCoinsBalance(coinsBalance) {

@@ -7,7 +7,7 @@ class Model {
     this.userTotal ;
     this.dealerTotal ;
     this.winst ;
-    this.coinBalance = 500 ;
+    this.coinBalance = 50000 ;
   }
 
   getInzet() {
@@ -166,27 +166,50 @@ class Model {
   }
 
   hasEnoughMoney(clicked) {
-      for (let x = 0; x < 4; x++) {
+      for (let x = 0; x < 5; x++) {
         if (this.bought[x] == clicked) {
           return true;
-        }
-      } else {
-        switch (clicked) {
-          case "1":
-              return true;
-              break;
-          case "2":
-              if (this.coinBalance => 3000) { return true;} else {return false};
-              break;
-          case "3":
-              if (this.coinBalance => 3000) { return true;} else {return false};
-              break;
-          case "4":
-              if (this.coinBalance => 3000) { return true;} else {return false};
-              break;
-        }
-      }
+        } else {
+          switch (clicked) {
+              case "1":
+                  return true;
+                  break;
+              case "2":
+                  if (this.coinBalance > 2999) {
+                    this.coinBalance -= 3000;
+                    return true;
+                  } else {
+                    return false;
+                  }
+                  break;
+              case "3":
+                  if (this.coinBalance > 2999) {
+                    this.coinBalance -= 3000;
+                    return true;
+                  } else {
+                    return false;
+                  }
+                  break;
+              case "4":
+                  if (this.coinBalance > 9999) {
+                    this.coinBalance -= 10000;
+                    return true;
+                  } else {
+                    return false;
+                  }
+                  break;
+              case "5":
+                  if (this.coinBalance > 49999) {
+                    this.coinBalance -= 50000;
+                    return true;
+                  } else {
+                    return false;
+                  }
+              }
+            }
+          }
   }
+
 
   onDiceHandler(userTotal, dealerTotal, userInput) {
 
