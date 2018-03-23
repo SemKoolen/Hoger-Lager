@@ -8,6 +8,7 @@ class Model {
     this.dealerTotal ;
     this.winst ;
     this.coinBalance = 50000 ;
+    this.bought = ["1"]
   }
 
   getInzet() {
@@ -139,9 +140,9 @@ class Model {
   }
 
   getImageRoll(clicked){
+    debugger;
     this.imageRoll = [];
     this.definitive = "";
-    this.bought = ["1"]
     switch (clicked) {
       case "1":
           this.definitive = ".png";
@@ -166,10 +167,14 @@ class Model {
   }
 
   hasEnoughMoney(clicked) {
-      for (let x = 0; x < 5; x++) {
-        if (this.bought[x] == clicked) {
-          return true;
-        } else {
+    debugger;
+    let hasBought = false;
+    for (let x = 0; x < 5; x++) {
+      if (this.bought[x] == clicked) {
+        hasBought = true;
+        }
+      }
+    if (hasBought != true) {
           switch (clicked) {
               case "1":
                   return true;
@@ -205,10 +210,10 @@ class Model {
                   } else {
                     return false;
                   }
-              }
-            }
           }
+        } else { return true};
   }
+
 
 
   onDiceHandler(userTotal, dealerTotal, userInput) {

@@ -54,6 +54,7 @@ class Controller {
    }
 
    onShopHandler(clicked) {
+     debugger;
      if (this.model.hasEnoughMoney(clicked)) {
        if (clicked == 5) {
          this.view.displayWinner(clicked);
@@ -63,9 +64,6 @@ class Controller {
          this.view.shopHandler(clicked, this.imageRoll);
          this.view.displayCoinsBalance(this.model.getCoinBalance());
        }
-     } else {
-       this.
-       this.view.displayShopError();
      }
 
    }
